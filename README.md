@@ -136,12 +136,15 @@ Project Root
 ### System Output Examples
 
 ![Main Detection Window](images/main_detection_output.png)
+
 *Main window showing distance measurement and safety warnings*
 
-![Debug Detection Window](images/debug_detection_output.png)  
+![Debug Detection Window](images/debug_detection_output.png)
+
 *Debug window displaying YOLO detection results*
 
 ![Lane Detection Result](images/lane_detection_output.png)
+
 *Lane boundary detection with ROI visualization*
 
 ### Main Classes
@@ -277,10 +280,6 @@ pip install opencv-python-headless
 - Real-time webcam input support
 - Multi-lane detection
 - Object tracking functionality
-- Mobile app porting
-- Cloud deployment
-- Dataset expansion and model fine-tuning
-
 ---
 
 **If this project was helpful, please consider giving it a star!**
