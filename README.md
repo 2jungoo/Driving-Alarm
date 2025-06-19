@@ -131,7 +131,25 @@ Project Root
 └── models/                # YOLO models (auto-download)
     └── yolov8s.pt
 ```
+## Demo Output
 
+### System Output Examples
+
+![Main Detection Window](images/main_detection_output.png)
+*Main window showing distance measurement and safety warnings*
+
+![Debug Detection Window](images/debug_detection_output.png)  
+*Debug window displaying YOLO detection results*
+
+![Lane Detection Result](images/lane_detection_output.png)
+*Lane boundary detection with ROI visualization*
+
+### Safety Warning Visualization
+
+![Distance Warning System](images/distance_warning_demo.gif)
+*Real-time distance-based warning system demonstration*
+
+## System Interface
 ### Main Classes
 
 ```python
