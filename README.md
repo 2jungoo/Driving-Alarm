@@ -145,8 +145,6 @@ Project Root
 
 ![Lane Detection Result](images/lane_detection_output.png)
 
-*Lane boundary detection with ROI visualization*
-
 ### Main Classes
 
 ```python
