@@ -1,67 +1,68 @@
 # Driving-Alarm
-# 🚗 Vehicle Distance Detection and Warning System
 
-AI 기반 실시간 차량 거리 측정 및 안전 경고 시스템
+## Vehicle Distance Detection and Warning System
 
-## 📋 프로젝트 개요
+An AI-powered real-time vehicle distance measurement and safety warning system for autonomous driving assistance.
 
-이 시스템은 **YOLOv8 객체 검출**과 **컴퓨터 비전 기술**을 활용하여 전방 차량의 거리를 실시간으로 측정하고, 안전 거리에 따른 시각적/음성 경고를 제공하는 자율주행 보조 시스템입니다.
+## Project Overview
 
-### ✨ 주요 기능
+This system utilizes **YOLOv8 object detection** and **computer vision technologies** to measure distances to forward vehicles in real-time and provides visual and audio warnings based on safety distances.
 
-- 🎯 **실시간 차량 검출**: YOLOv8 모델을 이용한 정확한 차량 인식
-- 📏 **정밀 거리 측정**: 카메라 캘리브레이션과 삼각법 기반 거리 계산
-- 🛣️ **차선 인식**: 허프 변환을 이용한 자차 차선 경계 검출
-- ⚠️ **3단계 안전 경고**: 거리별 색상 구분 (안전/주의/위험)
-- 🔊 **음성 알림**: TTS를 통한 실시간 음성 경고
-- 🎨 **이미지 향상**: CLAHE 히스토그램 평활화로 검출 정확도 개선
+## Key Features
 
-## 🎬 데모
+- **Real-time Vehicle Detection**: Accurate vehicle recognition using YOLOv8 model
+- **Precise Distance Measurement**: Distance calculation based on camera calibration and trigonometry
+- **Lane Recognition**: Lane boundary detection using Hough transform for ego lane identification
+- **Three-level Safety Warning**: Color-coded distance alerts (Safe/Caution/Danger)
+- **Voice Alerts**: Real-time audio warnings through TTS
+- **Image Enhancement**: Improved detection accuracy through CLAHE histogram equalization
 
-### 시스템 작동 화면
-- **메인 창**: 거리 측정 및 안전 경고 결과
-- **디버그 창**: YOLO 검출 결과
-- **전처리 창**: 히스토그램 평활화 결과
+## System Interface
 
-### 거리별 경고 시스템
-- 🟢 **안전 거리** (15m 이상): 초록색 표시
-- 🟠 **주의 거리** (7-15m): 주황색 표시  
-- 🔴 **위험 거리** (7m 미만): 빨간색 표시 + 음성 경고
+### Display Windows
+- **Main Window**: Distance measurement and safety warning results
+- **Debug Window**: YOLO detection results
+- **Preprocessing Window**: Histogram equalization results
 
-## 🚀 빠른 시작
+### Distance-based Warning System
+- **Safe Distance** (15m+): Green indicator
+- **Caution Distance** (7-15m): Orange indicator
+- **Danger Distance** (<7m): Red indicator + voice warning
 
-### 1. 환경 설정
+## Quick Start
 
-**Python 버전**: 3.8 이상 권장
+### 1. Environment Setup
+
+**Python Version**: 3.8 or higher recommended
 
 ```bash
-# 저장소 클론
-git clone https://github.com/your-username/vehicle-distance-detection.git
-cd vehicle-distance-detection
+# Clone repository
+git clone https://github.com/your-username/Driving-Alarm.git
+cd Driving-Alarm
 
-# 의존성 설치
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. 비디오 파일 준비
+### 2. Video File Preparation
 
 ```bash
-# videos 폴더 생성
+# Create videos folder
 mkdir videos
 
-# 테스트 비디오 파일을 videos/nD_1.mp4로 복사
-# 또는 VIDEO_PATH 변수를 원하는 파일 경로로 수정
+# Copy test video file to videos/nD_1.mp4
+# Or modify VIDEO_PATH variable to desired file path
 ```
 
-### 3. 실행
+### 3. Execution
 
 ```bash
 python main.py
 ```
 
-## 📦 설치 요구사항
+## Installation Requirements
 
-### 필수 라이브러리
+### Required Libraries
 
 ```txt
 opencv-python==4.8.1.78
@@ -70,162 +71,204 @@ numpy==1.24.3
 pyttsx3==2.90
 ```
 
-### 시스템 요구사항
+### System Requirements
 
-- **OS**: Windows 10/11 (TTS 최적화)
-- **RAM**: 최소 4GB (8GB 권장)
-- **GPU**: 선택사항 (CUDA 지원 시 성능 향상)
-- **카메라**: 비디오 파일 또는 웹캠
+- **OS**: Windows 10/11 (TTS optimized)
+- **RAM**: Minimum 4GB (8GB recommended)
+- **GPU**: Optional (performance improvement with CUDA support)
+- **Input**: Video file or webcam
 
-## ⚙️ 주요 설정
+## Configuration
 
-### 카메라 캘리브레이션
-```python
-CAMERA_HEIGHT = 2.0        # 카메라 높이 (m)
-CAMERA_TILT_ANGLE = 15     # 하향 각도 (도)
-CAMERA_FOV = 75            # 시야각 (도)
-```
-
-### 안전 거리 임계값
-```python
-WARNING_DISTANCE = 7.0     # 위험 거리 (m)
-CAUTION_DISTANCE = 15.0    # 주의 거리 (m)
-```
-
-### 검출 설정
-```python
-DETECTION_CONFIDENCE = 0.5 # YOLO 신뢰도
-YOLO_MODEL = 'yolov8s.pt'  # 모델 크기
-```
-
-## 🎮 사용법
-
-### 키보드 조작
-- **`q`**: 프로그램 종료
-- **`p` 또는 `Space`**: 일시정지/재생
-- **`r`**: 비디오 재시작
-- **`h`**: 히스토그램 평활화 토글
-- **`m`**: 평활화 방법 변경 (CLAHE ↔ Global)
-
-### 화면 정보
-- **통계**: 차선별 차량 수, 위험도별 분류
-- **TTS 상태**: 음성 시스템 작동 여부
-- **차선 상태**: 경계선 검출 상태
-- **범례**: 거리별 색상 구분
-
-## 🏗️ 시스템 구조
-
-```
-📁 프로젝트 루트
-├── 📄 main.py                 # 메인 실행 파일
-├── 📄 requirements.txt        # 의존성 목록
-├── 📄 README.md              # 프로젝트 설명
-├── 📁 videos/                # 입력 비디오 폴더
-│   └── 📹 nD_1.mp4          # 테스트 비디오
-└── 📁 models/                # YOLO 모델 (자동 다운로드)
-    └── 🤖 yolov8s.pt
-```
-
-### 주요 클래스
+### Camera Calibration
 
 ```python
-📦 ImagePreprocessor      # 이미지 전처리 (히스토그램 평활화)
-📦 SafeSpeaker           # 비동기 TTS 시스템
-📦 LaneDetector          # 차선 검출 (허프 변환)
-📦 VehicleDistanceDetector # 메인 시스템 (YOLO + 거리 계산)
+CAMERA_HEIGHT = 2.0        # Camera height (m)
+CAMERA_TILT_ANGLE = 15     # Downward angle (degrees)
+CAMERA_FOV = 75            # Field of view (degrees)
 ```
 
-## 🔧 성능 최적화
+### Safety Distance Thresholds
 
-### 고성능 환경 (GPU)
 ```python
-YOLO_MODEL = 'yolov8m.pt'     # 큰 모델
+WARNING_DISTANCE = 7.0     # Danger distance (m)
+CAUTION_DISTANCE = 15.0    # Caution distance (m)
+```
+
+### Detection Settings
+
+```python
+DETECTION_CONFIDENCE = 0.5 # YOLO confidence threshold
+YOLO_MODEL = 'yolov8s.pt'  # Model size
+```
+
+## Usage
+
+### Keyboard Controls
+
+- **q**: Exit program
+- **p** or **Space**: Pause/Resume
+- **r**: Restart video
+- **h**: Toggle histogram equalization
+- **m**: Change equalization method (CLAHE ↔ Global)
+
+### Display Information
+
+- **Statistics**: Vehicle count by lane and risk level
+- **TTS Status**: Voice system operation status
+- **Lane Status**: Boundary detection status
+- **Legend**: Color coding by distance
+
+## System Architecture
+
+```
+Project Root
+├── main.py                 # Main execution file
+├── requirements.txt        # Dependencies list
+├── README.md              # Project documentation
+├── videos/                # Input video folder
+│   └── nD_1.mp4          # Test video
+└── models/                # YOLO models (auto-download)
+    └── yolov8s.pt
+```
+
+### Main Classes
+
+```python
+ImagePreprocessor      # Image preprocessing (histogram equalization)
+SafeSpeaker           # Asynchronous TTS system
+LaneDetector          # Lane detection (Hough transform)
+VehicleDistanceDetector # Main system (YOLO + distance calculation)
+```
+
+## Performance Optimization
+
+### High Performance Environment (GPU)
+
+```python
+YOLO_MODEL = 'yolov8m.pt'     # Larger model
 IMAGE_WIDTH = 1280
 IMAGE_HEIGHT = 720
 DETECTION_CONFIDENCE = 0.6
 ```
 
-### 저성능 환경 (CPU)
+### Low Performance Environment (CPU)
+
 ```python
-YOLO_MODEL = 'yolov8n.pt'     # 가벼운 모델
+YOLO_MODEL = 'yolov8n.pt'     # Lightweight model
 IMAGE_WIDTH = 416
 IMAGE_HEIGHT = 416
 DETECTION_CONFIDENCE = 0.4
 ENABLE_HISTOGRAM_EQUALIZATION = False
 ```
 
-### 야간/저조도 환경
+### Night/Low Light Environment
+
 ```python
 HISTOGRAM_METHOD = "CLAHE"
 CLAHE_CLIP_LIMIT = 3.0
 DETECTION_CONFIDENCE = 0.4
 ```
 
-## 🧪 기술 스택
+## Technology Stack
 
 ### AI/ML
-- **YOLOv8**: 실시간 객체 검출
-- **OpenCV**: 컴퓨터 비전 처리
-- **NumPy**: 수치 계산
+- **YOLOv8**: Real-time object detection
+- **OpenCV**: Computer vision processing
+- **NumPy**: Numerical computation
 
-### 알고리즘
-- **삼각법**: 거리 계산
-- **허프 변환**: 차선 검출
-- **CLAHE**: 이미지 향상
-- **선형 보간**: 거리 매핑
+### Algorithms
+- **Trigonometry**: Distance calculation
+- **Hough Transform**: Lane detection
+- **CLAHE**: Image enhancement
+- **Linear Interpolation**: Distance mapping
 
-### 시스템
-- **Threading**: 비동기 TTS
-- **pyttsx3**: 음성 합성
-- **Queue**: 메시지 관리
+### System
+- **Threading**: Asynchronous TTS
+- **pyttsx3**: Speech synthesis
+- **Queue**: Message management
 
-## 📊 정확도 및 성능
+## Accuracy and Performance
 
-### 거리 측정 정확도
-- **근거리 (1-10m)**: ±0.5m
-- **중거리 (10-30m)**: ±1.0m
-- **원거리 (30m+)**: ±2.0m
+### Distance Measurement Accuracy
+- **Short Range (1-10m)**: ±0.5m
+- **Medium Range (10-30m)**: ±1.0m
+- **Long Range (30m+)**: ±2.0m
 
-### 처리 성능
+### Processing Performance
 - **CPU (Intel i5)**: ~15 FPS
 - **GPU (GTX 1660)**: ~30 FPS
-- **메모리 사용량**: ~500MB
+- **Memory Usage**: ~500MB
 
-### 검출 성능
-- **차량 검출률**: 95%+
-- **거짓 양성률**: <5%
-- **실시간 처리**: 가능
+### Detection Performance
+- **Vehicle Detection Rate**: 95%+
+- **False Positive Rate**: <5%
+- **Real-time Processing**: Available
 
-## 🔍 문제 해결
+## Troubleshooting
 
-### 일반적인 문제
+### Common Issues
 
-**1. TTS 음성이 나오지 않음**
-```python
-# Windows 음성 설정 확인
-# 관리자 권한으로 실행
-# pip install pyttsx3 --upgrade
-```
-
-**2. YOLO 모델 다운로드 실패**
+**1. TTS voice not working**
 ```bash
-# 인터넷 연결 확인
-# 방화벽 설정 확인
-# 수동 다운로드: https://github.com/ultralytics/assets/releases/
+# Check Windows voice settings
+# Run as administrator
+pip install pyttsx3 --upgrade
 ```
 
-**3. OpenCV 비디오 재생 오류**
+**2. YOLO model download failure**
 ```bash
-# 코덱 문제: FFmpeg 설치
-# pip install opencv-python-headless
+# Check internet connection
+# Check firewall settings
+# Manual download: https://github.com/ultralytics/assets/releases/
 ```
 
-**4. 거리 측정 부정확**
+**3. OpenCV video playback error**
+```bash
+# Codec issue: Install FFmpeg
+pip install opencv-python-headless
+```
+
+**4. Inaccurate distance measurement**
 ```python
-# 카메라 캘리브레이션 파라미터 재조정
-# 실제 카메라 높이와 각도 측정 필요
+# Readjust camera calibration parameters
+# Measure actual camera height and angle
+```
 
+### Performance Issues
 
-**[JUNGOO LEE]**
+**High CPU Usage**
+- Reduce image resolution
+- Disable histogram equalization
+- Use lightweight YOLO model
 
-**⭐ 이 프로젝트가 도움이 되었다면 Star를 눌러주세요!**
+## Developer
+
+**JUNGOO LEE**
+- GitHub: [@2jungoo](https://github.com/2jungoo)
+- Email: wnsrn8211@gmail.com
+
+## Acknowledgments
+
+- [Ultralytics](https://github.com/ultralytics/ultralytics) - YOLOv8 provider
+- [OpenCV](https://opencv.org/) - Computer vision library
+- [pyttsx3](https://github.com/nateshmbhat/pyttsx3) - TTS library
+
+## References
+
+- [YOLOv8 Documentation](https://docs.ultralytics.com/)
+- [OpenCV Tutorials](https://docs.opencv.org/4.x/d9/df8/tutorial_root.html)
+- [Computer Vision Algorithms](https://en.wikipedia.org/wiki/Computer_vision)
+
+## Future Roadmap
+
+- Real-time webcam input support
+- Multi-lane detection
+- Object tracking functionality
+- Mobile app porting
+- Cloud deployment
+- Dataset expansion and model fine-tuning
+
+---
+
+**If this project was helpful, please consider giving it a star!**
