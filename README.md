@@ -144,12 +144,6 @@ Project Root
 ![Lane Detection Result](images/lane_detection_output.png)
 *Lane boundary detection with ROI visualization*
 
-### Safety Warning Visualization
-
-![Distance Warning System](images/distance_warning_demo.gif)
-*Real-time distance-based warning system demonstration*
-
-## System Interface
 ### Main Classes
 
 ```python
